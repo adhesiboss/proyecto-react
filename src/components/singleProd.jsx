@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchItemById } from './asyncMocks';
 import { CartContext } from '../context/CartContext';
+import ItemCount from './ItemCount';
+import './SingleProd.css';
 
 const SingleProd = () => {
   const { id } = useParams();
@@ -17,15 +19,22 @@ const SingleProd = () => {
     fetchItem();
   }, [id]);
 
+  const handleAddToCart = (quantity) => {
+    if (item) {
+      addToCart({ ...item, quantity });
+    }
+  };
+
   return (
-    <div>
-      <h1>Detalle del Producto</h1>
+    <div className="product-detail">
       {item ? (
-        <div>
+        <div className="card">
+          <h1>Detalle del Producto</h1>
           <h2>{item.name}</h2>
           <p>ID del Producto: {item.id}</p>
           <p>Categoría: {item.category}</p>
-          <button onClick={() => addToCart(item)}>Agregar al carrito</button>
+
+          <ItemCount initial={1} stock={10} onAdd={handleAddToCart} />
         </div>
       ) : (
         <p>Cargando...</p>

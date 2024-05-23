@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchItemsByCategory, fetchAllItems } from './asyncMocks';
+import Item from './Item';
+
 
 const ItemListContainer = ({ greeting }) => {
   const { categoryId } = useParams();
@@ -22,14 +24,13 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <div>
-      <h1>{greeting}</h1>
-      <p>{categoryId ? `Categoría: ${categoryId}` : 'Todos los productos'}</p>
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+    <h1>{greeting}</h1>
+    <div className="item-list">
+      {items.map(item => (
+        <Item key={item.id} id={item.id} name={item.name} category={item.category} />
+      ))}
     </div>
+  </div>
   );
 };
 

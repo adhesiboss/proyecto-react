@@ -1,11 +1,13 @@
 .allnav{
   width: 90vw;
+  max-width: 1200px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   color: orange;
   text-align: left;
+  gap: 10px;
 }
 .barra{
 display: flex;

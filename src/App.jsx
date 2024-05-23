@@ -11,9 +11,9 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<ItemListContainer greeting='Bienvenidos a mi tienda' />} />
-          <Route path="/category/:categoryId" element={<ItemListContainer greeting='Bienvenidos a mi tienda' />} />
-          <Route path="/item/:id" element={<SingleProd />} />
+          <Route exact path="/" element={<ItemListContainer greeting='Bienvenidos a mi tienda' />} />
+          <Route exact path="/category/:categoryId" element={<ItemListContainer greeting='Bienvenidos a mi tienda' />} />
+          <Route exact path="/item/:id" element={<SingleProd />} />
         </Routes>
       </Router>
     </CartProvider>
