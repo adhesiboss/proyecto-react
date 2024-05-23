@@ -4,7 +4,7 @@ export default function CartWidget() {
     <>
 
         <button>
-          casa
+           🛒 11
         </button>
     </>
   );

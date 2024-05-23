@@ -1,14 +1,14 @@
 import './App.css'
-import CartWidget from './components/CartWidget'
+import ItemListContainer from './components/ItemListContainer'
+import NavBar from './components/NavBar'
 
 function App() {
 
   return (
     <>
       
-      <h1>MI tienda</h1>
-      
-      <CartWidget></CartWidget>
+      <NavBar/>
+      <ItemListContainer greeting='Bienvenidos a mi tienda'/>
     </>
   )
 }

@@ -1,0 +1,10 @@
+.item-list-container {
+  color: grey;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
