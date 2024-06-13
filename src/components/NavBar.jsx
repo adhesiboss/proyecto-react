@@ -1,26 +1,27 @@
 import { Link } from 'react-router-dom';
 import ButtonComponent from './ButtonComponent';
-import CartWidget from './CartWidget';
+import CartWidget from './CartWidget'; // Importa el componente CartWidget
 import './NavBar.css';
 
 export default function NavBar() {
   return (
     <header className='allnav'>
-      <h1>
-        <Link to="/">Mi tienda</Link>
-      </h1>
+      <h1><Link to="/">Yoga Videos</Link></h1>
+
       <nav className="barra">
-        <Link to="/category/motherboards">
-          <ButtonComponent nombre='MotherBoards' />
+        <Link to="/category/plan1">
+          <ButtonComponent nombre='Plan 1: Básico Semanal' />
         </Link>
-        <Link to="/category/micros">
-          <ButtonComponent nombre='Micros' />
+        <Link to="/category/plan2">
+          <ButtonComponent nombre='Plan 2: Intermedio Trimestral' />
         </Link>
-        <Link to="/category/gabinetes">
-          <ButtonComponent nombre='Gabinetes' />
+        <Link to="/category/plan3">
+          <ButtonComponent nombre='Plan 3: Avanzado Semestral' />
+        </Link>
+        <Link to="/cart">
+          <CartWidget /> 
         </Link>
       </nav>
-      <CartWidget />
     </header>
   );
 }

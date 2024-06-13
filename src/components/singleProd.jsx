@@ -31,9 +31,7 @@ const SingleProd = () => {
         <div className="card">
           <h1>Detalle del Producto</h1>
           <h2>{item.name}</h2>
-          <p>ID del Producto: {item.id}</p>
-          <p>Categoría: {item.category}</p>
-
+          <p>{item.description}</p>
           <ItemCount initial={1} stock={10} onAdd={handleAddToCart} />
         </div>
       ) : (

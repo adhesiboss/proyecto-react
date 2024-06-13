@@ -1,23 +1,16 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const CartWidget = () => {
-  const { cartItems } = useContext(CartContext);
+  const { totalItems } = useContext(CartContext);
 
   return (
     <div>
-      <h2>Carrito</h2>
-      {cartItems.length === 0 ? (
-        <p>No hay productos en el carrito</p>
-      ) : (
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.category}
-            </li>
-          ))}
-        </ul>
-      )}
+      <Link to="/cart">
+        🛒
+        <span>{totalItems}</span>
+      </Link>
     </div>
   );
 };

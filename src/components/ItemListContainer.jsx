@@ -1,36 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchItemsByCategory, fetchAllItems } from './asyncMocks';
+import { fetchItems, fetchItemsByCategory } from './asyncMocks';
 import Item from './Item';
-
+import './ItemListContainer.css';
 
 const ItemListContainer = ({ greeting }) => {
   const { categoryId } = useParams();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const fetchItems = async () => {
-      let itemsData;
+    const fetchData = async () => {
       if (categoryId) {
-        itemsData = await fetchItemsByCategory(categoryId);
+        const itemsData = await fetchItemsByCategory(categoryId);
+        setItems(itemsData);
       } else {
-        itemsData = await fetchAllItems();
+        const itemsData = await fetchItems();
+        setItems(itemsData);
       }
-      setItems(itemsData);
     };
 
-    fetchItems();
+    fetchData();
   }, [categoryId]);
 
   return (
     <div>
-    <h1>{greeting}</h1>
-    <div className="item-list">
-      {items.map(item => (
-        <Item key={item.id} id={item.id} name={item.name} category={item.category} />
-      ))}
+      <h1>{greeting}</h1>
+      <div className="item-list">
+        {items.map(item => (
+          <Item key={item.id} id={item.id} name={item.name} category={item.category} />
+        ))}
+      </div>
     </div>
-  </div>
   );
 };
 
