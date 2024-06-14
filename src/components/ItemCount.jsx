@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './ItemCount.css'; // Importa el archivo de estilos
+import './ItemCount.css'; 
 
 const ItemCount = ({ initial, stock, onAdd }) => {
   const [quantity, setQuantity] = useState(initial);

@@ -6,7 +6,6 @@ const Brief = ({ cart }) => {
       {cart.map((item, index) => (
         <div key={index}>
           <p>{item.name}</p>
-          {/* Agrega más detalles del producto según sea necesario */}
         </div>
       ))}
     </div>
