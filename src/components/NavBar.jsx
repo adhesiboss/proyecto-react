@@ -1,31 +1,25 @@
+import { Link } from 'react-router-dom';
 import ButtonComponent from './ButtonComponent';
 import CartWidget from './CartWidget';
-import  './NavBar.css';
+import './NavBar.css';
 
 export default function NavBar() {
-
-  const clickMotherBoards = () => {
-    console.log('hiciste click motherBoards')
-  }
-
-  const clickMicros = () => {
-    console.log('hiciste click Micros')
-  }
-
-  const clickGabinetes = () => {
-    console.log('hiciste click Gabinetes')
-  }
   return (
     <header className='allnav'>
-    <h1>Mi tienda</h1>
+      <h1><Link to="/">Yoga Videos</Link></h1>
 
-    <nav className="barra">
-      <ButtonComponent nombre='MotherBoards' callback={clickMotherBoards}></ButtonComponent>
-      <ButtonComponent nombre='Micros' callback={clickMicros}></ButtonComponent>
-      <ButtonComponent nombre='Gabinetes' callback={clickGabinetes}></ButtonComponent>
-
-    </nav>
-    <CartWidget/>
+      <nav className="barra">
+        <Link to="/category/plan1">
+          <ButtonComponent nombre='Plan 1: Básico Semanal' />
+        </Link>
+        <Link to="/category/plan2">
+          <ButtonComponent nombre='Plan 2: Intermedio Trimestral' />
+        </Link>
+        <Link to="/category/plan3">
+          <ButtonComponent nombre='Plan 3: Avanzado Semestral' />
+        </Link>
+      </nav>
+      <CartWidget />
     </header>
   );
 }

@@ -8,3 +8,8 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+.item-list {
+  display: inline-block;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

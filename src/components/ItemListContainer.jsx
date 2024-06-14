@@ -1,10 +1,43 @@
-import  './ItemListContainer.css';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from './firebase';
+import Item from './Item';
+import './ItemListContainer.css';
 
-export default function ItemListContainer({ greeting }) {
+const ItemListContainer = ({ greeting }) => {
+  const { categoryId } = useParams();
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const itemsCollection = collection(db, 'items');
+      let itemsQuery;
+
+      if (categoryId) {
+        itemsQuery = query(itemsCollection, where('category', '==', categoryId));
+      } else {
+        itemsQuery = itemsCollection;
+      }
+
+      const querySnapshot = await getDocs(itemsQuery);
+      const itemsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setItems(itemsData);
+    };
+
+    fetchData();
+  }, [categoryId]);
+
   return (
-    <>
-        <h2 className='item-list-container'>{greeting}</h2>
-
-    </>
+    <div>
+      <h1>{greeting}</h1>
+      <div className="item-list">
+        {items.map(item => (
+          <Item key={item.id} id={item.id} name={item.name} category={item.category} />
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default ItemListContainer;
