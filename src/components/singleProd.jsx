@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchItemById } from './asyncMocks';
+import { doc, getDoc } from 'firebase/firestore';
 import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
+import { db } from './firebase';
 import './SingleProd.css';
 
 const SingleProd = () => {
@@ -12,8 +13,18 @@ const SingleProd = () => {
 
   useEffect(() => {
     const fetchItem = async () => {
-      const itemData = await fetchItemById(id);
-      setItem(itemData);
+      try {
+        console.log(`Fetching item with ID: ${id}`);
+        const itemDoc = await getDoc(doc(db, 'items', id));
+        if (itemDoc.exists()) {
+          console.log('Document data:', itemDoc.data());
+          setItem(itemDoc.data());
+        } else {
+          console.error("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document:", error);
+      }
     };
 
     fetchItem();

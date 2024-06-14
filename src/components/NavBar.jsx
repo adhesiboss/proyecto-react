@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ButtonComponent from './ButtonComponent';
-import CartWidget from './CartWidget'; // Importa el componente CartWidget
+import CartWidget from './CartWidget';
 import './NavBar.css';
 
 export default function NavBar() {
@@ -18,10 +18,8 @@ export default function NavBar() {
         <Link to="/category/plan3">
           <ButtonComponent nombre='Plan 3: Avanzado Semestral' />
         </Link>
-        <Link to="/cart">
-          <CartWidget /> 
-        </Link>
       </nav>
+      <CartWidget />
     </header>
   );
 }

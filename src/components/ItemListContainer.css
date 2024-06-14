@@ -9,7 +9,7 @@
   -o-border-radius: 10px;
 }
 .item-list {
-  display: flex;
+  display: inline-block;
   flex-wrap: wrap;
   justify-content: space-around;
 }

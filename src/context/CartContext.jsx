@@ -6,10 +6,10 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (item) => {
-    const existingItemIndex = cartItems.findIndex(i => i.id === item.id);
-    if (existingItemIndex > -1) {
-      const updatedCartItems = cartItems.map((i, index) =>
-        index === existingItemIndex ? { ...i, quantity: i.quantity + item.quantity } : i
+    const existingItem = cartItems.find(i => i.id === item.id);
+    if (existingItem) {
+      const updatedCartItems = cartItems.map(i =>
+        i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
       );
       setCartItems(updatedCartItems);
     } else {

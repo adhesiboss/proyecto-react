@@ -1,31 +1,39 @@
 import { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
+import './Cart.css'; 
 
 const Cart = () => {
-  const { cartItems, removeFromCart, totalItems, totalPrice } = useContext(CartContext);
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
-  if (totalItems === 0) {
+  if (cartItems.length === 0) {
     return (
-      <div>
-        <h2>Tu carrito está vacío</h2>
-        <Link to="/">Volver a la tienda</Link>
+      <div className="product-detail">
+        <div className="card">
+          <p>No hay ítems en el carrito.</p>
+          <Link to="/"><button>Volver al inicio</button></Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <h2>Carrito de compras</h2>
-      <ul>
-        {cartItems.map(item => (
-          <li key={item.id}>
-            {item.name} - {item.quantity} x ${item.price}
-            <button onClick={() => removeFromCart(item.id)}>Eliminar</button>
-          </li>
-        ))}
-      </ul>
-      <h3>Total: ${totalPrice}</h3>
+    <div className="product-detail">
+      <div className="card">
+        <h2>Carrito de Compras</h2>
+        <ul>
+          {cartItems.map(item => (
+            <li key={item.id}>
+              <div className="item">
+                <span>{item.quantity} x {item.name}</span>
+                <button className="delete-button" onClick={() => removeFromCart(item.id)}>Eliminar</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p>Total de ítems: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
+        <Link to="/checkout"><button>Terminar mi compra</button></Link>
+      </div>
     </div>
   );
 };
