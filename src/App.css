@@ -41,3 +41,22 @@
   color: #888;
 }
 
+.greeting-container {
+  text-align: center;
+  margin: 20px;
+  color: #ffffff;
+}
+
+.greeting-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+.greeting-description {
+  font-size: 0.9em;
+  line-height: 1.5;
+  font-weight: lighter;
+
+}

@@ -30,10 +30,17 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <div>
-      <h1>{greeting}</h1>
+      <h1 className="greeting-text">{greeting}</h1>
       <div className="item-list">
         {items.map(item => (
-          <Item key={item.id} id={item.id} name={item.name} category={item.category} />
+          <Item 
+            key={item.id} 
+            id={item.id} 
+            name={item.name} 
+            category={item.category}
+            description={item.description} 
+            imageKey={item.imageKey} 
+          />
         ))}
       </div>
     </div>

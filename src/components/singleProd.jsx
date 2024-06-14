@@ -5,6 +5,9 @@ import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
 import { db } from './firebase';
 import './SingleProd.css';
+import plan1Image from '../assets/plan1.jpg';
+import plan2Image from '../assets/plan2.jpg';
+import plan3Image from '../assets/plan3.jpg';
 
 const SingleProd = () => {
   const { id } = useParams();
@@ -36,12 +39,24 @@ const SingleProd = () => {
     }
   };
 
+  let image;
+  if (item?.imageKey === 'plan1') {
+    image = plan1Image;
+  } else if (item?.imageKey === 'plan2') {
+    image = plan2Image;
+  } else if (item?.imageKey === 'plan3') {
+    image = plan3Image;
+  } else {
+    image = ''; 
+  }
+
   return (
     <div className="product-detail">
       {item ? (
         <div className="card">
-          <h1>Detalle del Producto</h1>
+          <h1 className="product-title">Detalles del Producto</h1>
           <h2>{item.name}</h2>
+          <img src={image} alt={item.name} /> 
           <p>{item.description}</p>
           <ItemCount initial={1} stock={10} onAdd={handleAddToCart} />
         </div>

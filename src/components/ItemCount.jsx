@@ -16,7 +16,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
       {added ? (
         <>
           <Link to="/cart">
-            <button className="button-column">Terminar mi compra</button>
+            <button className="button-column">Ir al Carrito</button>
           </Link>
           <Link to="/">
             <button className="button-column">Seguir comprando</button>
