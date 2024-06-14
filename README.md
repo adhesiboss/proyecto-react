@@ -1,6 +1,6 @@
-# 🛒 Proyecto Tienda Online
+# 🛒 Proyecto Tienda Online de Aksaya Studio
 
-¡Bienvenido al Proyecto Tienda Online! Este proyecto es una aplicación de comercio electrónico moderna construida con React, Firebase y componentes estilizados. Incluye características como listados de productos, un carrito de compras y gestión de pedidos.
+¡Bienvenidos a Aksaya Studio! Ofrecemos una variedad de planes de video de yoga para ayudarte a explorar la eternidad a través del Vinyasa Yoga. Este estilo dinámico y fluido sincroniza la respiración con movimientos suaves y continuos, creando una experiencia de flujo constante entre las posturas y fomentando la conexión mente-cuerpo. ¡Descubre nuestros planes y encuentra el que mejor se adapte a tus necesidades!
 
 ## 📝 Tabla de Contenidos
 
@@ -31,15 +31,17 @@ Este proyecto es una aplicación de tienda online simple pero robusta. Los usuar
 - **Estilos**: CSS, componentes estilizados (styled-components)
 - **Notificaciones**: react-toastify
 
+
 ## 🛠️ Configuración
 
 Sigue estos pasos para configurar el proyecto localmente:
 
-1. Clona el repositorio: `git clone https://github.com/your-username/online-store-project.git`
+1. Clona el repositorio: `git clone https://github.com/adhesiboss/proyecto-react`
 2. Navega al directorio del proyecto: `cd online-store-project`
-3. Instala las dependencias: `npm install`
+3. Instala las dependencias: `yarn install`
 4. Configura Firebase Firestore para el backend y configura tus credenciales de Firebase en el proyecto.
-5. Inicia el servidor de desarrollo: `npm start`
+5. Inicia el servidor de desarrollo: `yarn vite`
+
 
 ## 📖 Uso
 
@@ -82,4 +84,4 @@ Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE
 - **react-dom**: "^18.2.0"
 - **react-router-dom**: "^6.23.1"
 - **react-toastify**: "^10.0.5"
-
+- **vite**: "^5.2.0"
