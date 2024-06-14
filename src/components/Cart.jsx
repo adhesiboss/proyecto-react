@@ -32,7 +32,7 @@ const Cart = () => {
           ))}
         </ul>
         <p>Total de ítems: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
-        <Link to="/checkout"><button>Terminar mi compra</button></Link>
+        <Link to="/Checkout"><button>Terminar mi compra</button></Link>
       </div>
     </div>
   );
