@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import createOrder from './createOrder';
 import { toast } from 'react-toastify';
+import './Checkout.css';
 
 const Checkout = () => {
   const { cartItems, clearCart } = useContext(CartContext);
@@ -20,8 +21,29 @@ const Checkout = () => {
   };
 
   const handleCheckout = async () => {
+    if (!buyer.name || !buyer.phone || !buyer.email || !confirmEmail) {
+      toast.error('Por favor completa todos los campos', {
+        autoClose: 10000,
+      });
+      return;
+    }
+
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(buyer.email)) {
+      toast.error('Formato de correo electrónico incorrecto', {
+        autoClose: 10000,
+      });
+      return;
+    }
+
     if (buyer.email !== confirmEmail) {
       toast.error('Los correos electrónicos no coinciden', {
+        autoClose: 100000,
+      });
+      return;
+    }
+
+    if (!/^\d{9}$/.test(buyer.phone)) {
+      toast.error('El teléfono debe tener 9 números', {
         autoClose: 100000,
       });
       return;
@@ -35,7 +57,9 @@ const Checkout = () => {
       clearCart();
       navigate('/');
     } catch (error) {
-      console.error('Error al finalizar la compra: ', error.message);
+      console.error('Error al finalizar la compra: ', error.message, {
+        autoClose: 10000,
+      });
       toast.error(`Error al finalizar la compra: ${error.message}`, {
         autoClose: 10000,
       });
@@ -53,13 +77,21 @@ const Checkout = () => {
             </li>
           ))}
         </ul>
-        <p>Total: ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</p>
-        <div>
+        <h3>Total a Pagar: ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</h3>
+        <div className="input-grid">
           <input
             type="text"
             name="name"
             placeholder="Nombre"
             value={buyer.name}
+            onChange={handleInputChange}
+          />
+          
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            value={buyer.email}
             onChange={handleInputChange}
           />
           <input
@@ -69,13 +101,7 @@ const Checkout = () => {
             value={buyer.phone}
             onChange={handleInputChange}
           />
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            value={buyer.email}
-            onChange={handleInputChange}
-          />
+
           <input
             type="email"
             name="confirmEmail"
@@ -84,7 +110,7 @@ const Checkout = () => {
             onChange={handleConfirmEmailChange}
           />
         </div>
-        <button onClick={handleCheckout}>Pagar</button>
+        <button className="buttonPagar" onClick={handleCheckout}>Pagar</button>
       </div>
     </div>
   );
